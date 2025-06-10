@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
   "manifestVersion": "1.16",
   "version": "1.0.0",
-  "id": "78e2bf35-7a52-4838-9b5b-bcc2b6c0e7d5",
+  "id": "weme-microlearning-app-2025",
   "packageName": "com.weme.microlearning",
   "developer": {
     "name": "Weme",

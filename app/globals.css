@@ -1,26 +1,204 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 250 248 245; /* Varm hvit */
+    --foreground: 45 45 45; /* Mørk grå */
+    --card: 255 255 255;
+    --card-foreground: 45 45 45;
+    --popover: 255 255 255;
+    --popover-foreground: 45 45 45;
+    --primary: 45 90 135; /* Dyp blå */
+    --primary-foreground: 255 255 255;
+    --secondary: 139 157 131; /* Naturlig grønn */
+    --secondary-foreground: 255 255 255;
+    --muted: 248 246 243; /* Varm krem */
+    --muted-foreground: 90 90 90;
+    --accent: 196 164 132; /* Varm beige */
+    --accent-foreground: 45 45 45;
+    --destructive: 217 119 87; /* Varm rød */
+    --destructive-foreground: 255 255 255;
+    --border: 230 225 220; /* Subtil border */
+    --input: 240 235 230; /* Input bakgrunn */
+    --ring: 45 90 135; /* Focus ring */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 25 30 35;
+    --foreground: 240 240 240;
+    --card: 35 40 45;
+    --card-foreground: 240 240 240;
+    --popover: 35 40 45;
+    --popover-foreground: 240 240 240;
+    --primary: 74 127 167;
+    --primary-foreground: 255 255 255;
+    --secondary: 107 122 100;
+    --secondary-foreground: 255 255 255;
+    --muted: 45 50 55;
+    --muted-foreground: 160 160 160;
+    --accent: 166 138 107;
+    --accent-foreground: 240 240 240;
+    --destructive: 180 90 70;
+    --destructive-foreground: 255 255 255;
+    --border: 60 65 70;
+    --input: 50 55 60;
+    --ring: 74 127 167;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/30;
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-smooth hover:shadow-soft hover:-translate-y-1;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, #4a7fa7 0%, #2d5a87 100%);
+  }
+
+  .gradient-secondary {
+    background: linear-gradient(135deg, #8b9d83 0%, #6b7a64 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #c4a484 0%, #a68a6b 100%);
+  }
+
+  /* Text gradients */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #4a7fa7 0%, #2d5a87 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+}
+
+@layer components {
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-ring;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 focus-ring;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 focus-ring;
+  }
+
+  /* Card styles */
+  .card-elevated {
+    @apply bg-card border border-border/50 shadow-soft rounded-lg;
+  }
+
+  .card-interactive {
+    @apply card-elevated card-hover cursor-pointer;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply bg-input border border-border/50 focus:border-primary/50 focus-ring rounded-md;
+  }
+
+  /* Badge styles */
+  .badge-primary {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  .badge-secondary {
+    @apply bg-secondary/10 text-secondary border border-secondary/20;
+  }
+
+  .badge-accent {
+    @apply bg-accent/10 text-accent-foreground border border-accent/20;
+  }
+
+  .badge-success {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .badge-warning {
+    @apply bg-warning/10 text-warning-foreground border border-warning/20;
+  }
 }
