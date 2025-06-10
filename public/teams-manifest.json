@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "78e2bf35-7a52-4838-9b5b-bcc2b6c0e7d5",
+  "packageName": "com.weme.microlearning",
+  "developer": {
+    "name": "Weme",
+    "websiteUrl": "https://weme-teams-app.vercel.app",
+    "privacyUrl": "https://weme-teams-app.vercel.app",
+    "termsOfUseUrl": "https://weme-teams-app.vercel.app"
+  },
+  "icons": {
+    "color": "icon-color.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "Weme Mikrolæring",
+    "full": "Weme Mikrolæring for Teams"
+  },
+  "description": {
+    "short": "Mikrolæring og refleksjon",
+    "full": "En enkel app for mikrolæring og refleksjon i Teams"
+  },
+  "accentColor": "#6366F1",
+  "staticTabs": [
+    {
+      "entityId": "main-tab",
+      "name": "Mikrolæring",
+      "contentUrl": "https://weme-teams-app.vercel.app/",
+      "websiteUrl": "https://weme-teams-app.vercel.app/",
+      "scopes": ["personal"]
+    }
+  ],
+  "permissions": ["identity"],
+  "validDomains": ["weme-teams-app.vercel.app"]
+}
